@@ -1,30 +1,90 @@
-# Bioinformática Reproducible
+# Reproducible Bioinformatics
 
-Repositorio de ejercicios prácticos de la Unidad 1, Sesión 1.
+## Academic Information
 
-## Ejercicio 1: extracción de identificadores de maíz
+| Item | Details |
+|---|---|
+| Course | Reproducible Bioinformatics |
+| Student | Luan Americo Da Silva |
+| Postgraduate Program | Doctoral Program in Biomedical Sciences |
+| Institution | University of Chile |
+| Academic Year | 2026 |
+| Instructor | Ricardo Verdugo S. |
 
-El archivo `nombres_maiz.txt` contiene los identificadores extraídos de la segunda columna del archivo de muestras mediante `awk`.
+## Repository Objective
 
-## Ejercicio 2: creación de directorios de poblaciones
+This repository documents practical exercises developed during the Reproducible Bioinformatics course. It demonstrates Linux command-line operations, file management, Bash scripting, sequence retrieval, and reproducible analysis workflows.
 
-El script `crear_poblaciones.sh` crea los directorios `PobA`, `PobB`, `PobC` y `PobD`, y genera un archivo `individuo.txt` en cada uno.
+## Exercise 1 — Linux Command Line and File Management
 
-Para ejecutarlo desde esta carpeta:
+This exercise covers directory navigation, file creation and management, text searching, file inspection, compression, and extraction.
 
-    bash crear_poblaciones.sh
+A list of maize sample identifiers was extracted from a `.fam` file and saved as `nombres_maiz.txt`.
 
-## Ejercicio 3: conteo de TGCA en secuencias matK
+## Exercise 2 — Bash Scripting
 
-El script `ejercicio3/contar_tgca.sh` cuenta las apariciones de `TGCA` en registros FASTA.
+The script `crear_poblaciones.sh` creates four population directories (`PobA`, `PobB`, `PobC`, and `PobD`) and writes an `individuo.txt` file into each directory.
 
-Los datos de entrada están en `ejercicio3/secuencias_matk.fasta` y los resultados en `ejercicio3/resultados_tgca.txt`.
+To run the script from the repository root:
 
-Para ejecutar el análisis:
+```bash
+bash crear_poblaciones.sh
+```
 
-    cd ejercicio3
-    bash contar_tgca.sh
+## Exercise 3 — DNA Sequence Retrieval and Motif Counting
 
-## Reproducibilidad
+Five partial chloroplast `matK` coding sequences from *Pinus patula* were retrieved from NCBI and saved in FASTA format.
 
-Los scripts, datos de entrada seleccionados y resultados permiten revisar los procedimientos realizados durante los ejercicios.
+The script `ejercicio3/contar_tgca.sh` counts occurrences of the DNA motif `TGCA` in each sequence.
+
+| Sequence accession | TGCA occurrences |
+|---|---:|
+| MH778523.1 | 1 |
+| MH778522.1 | 1 |
+| MH712868.1 | 1 |
+| MH712867.1 | 1 |
+| AY497284.1 | 4 |
+
+The results are saved in `ejercicio3/resultados_tgca.txt`. These counts describe motif frequency only and do not establish a biological function for the motif.
+
+## Repository Structure
+
+```text
+Sesion1/
+├── README.md
+├── crear_poblaciones.sh
+├── nombres_maiz.txt
+├── PobA/
+│   └── individuo.txt
+├── PobB/
+│   └── individuo.txt
+├── PobC/
+│   └── individuo.txt
+├── PobD/
+│   └── individuo.txt
+└── ejercicio3/
+    ├── contar_tgca.sh
+    ├── ids_limpios.txt
+    ├── resultados_tgca.txt
+    └── secuencias_matk.fasta
+```
+
+## Reproducibility
+
+Run the following commands from the repository root:
+
+```bash
+bash crear_poblaciones.sh
+bash ejercicio3/contar_tgca.sh
+```
+
+To save the motif-counting output:
+
+```bash
+bash ejercicio3/contar_tgca.sh > ejercicio3/resultados_tgca.txt
+```
+
+## Conclusions
+
+These exercises introduce reproducible practices for organizing research files, automating repetitive tasks, retrieving biological sequences, and documenting simple computational analyses.
+
